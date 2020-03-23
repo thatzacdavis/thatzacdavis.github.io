@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 body {
     background-color: #212121;
     color: #DEDEDE;
@@ -7,12 +13,15 @@ body {
 }
 
 header {
+    border-bottom: 3px solid #f765b8;
+    color: #27fdf5;
+}
+
+header .site-title {
     font-size: 100px;
     font-weight: 500;
     font-family: 'Righteous', cursive;
-    color: #27fdf5;
     letter-spacing: -9px;
-    border-bottom: 3px solid #f765b8;
     text-shadow: 2px 2px 12px #f98dc9;
 }
 
