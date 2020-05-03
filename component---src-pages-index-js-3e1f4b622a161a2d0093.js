@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{RXBc:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),l=t.n(a),r=function(){return l.a.createElement("header",null,"thatzacdavis")};n.default=function(){return l.a.createElement(l.a.Fragment,null,l.a.createElement(r,null),l.a.createElement("div",null,l.a.createElement("h1",null,"Hello Gatsby!")))}}}]);
+//# sourceMappingURL=component---src-pages-index-js-3e1f4b622a161a2d0093.js.map
