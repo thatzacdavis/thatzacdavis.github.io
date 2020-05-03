@@ -1,11 +1,10 @@
 import React from "react"
 import Header from "../components/header"
+import DiagonalBox from "../components/diagonalBox"
 
 export default () => (
   <>
     <Header />
-    <div>
-      <h1>Hello Gatsby!</h1>
-    </div>
+      <DiagonalBox />
   </>
 )
