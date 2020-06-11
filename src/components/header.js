@@ -1,20 +1,66 @@
-import React from "react"
-import { Link } from "gatsby"
-import Twitter from "../../assets/twitter.svg"
-import Twitch from "../../assets/twitch.svg"
-import GitHub from "../../assets/github.svg"
+import { graphql, useStaticQuery, Link } from "gatsby";
+import React, { useState } from "react";
 
-export default () => (
-<header className="grid grid-cols-4 gap-4 flex items-baseline">
-    <div className="col-span-3">
-        <span className="site-title mr-6">thatzacdavis</span>
-        <a href="https://twitter.com/thatzacdavis"><Twitter className="inline m-1" /></a>
-        <a href="https://www.twitch.tv/thatzacdavis"><Twitch className="inline m-1" /></a>
-        <a href="https://github.com/thatzacdavis"><GitHub className="inline m-1" /></a>
-    </div>
-    <div className="col-span-1 relative">
-        <Link className="p-2" to="/">Home</Link>
-        <Link className="p-2" to="/about/">About</Link>  
-    </div>
-</header>
-);
+function Header() {
+  const [isExpanded, toggleExpansion] = useState(false);
+  const { site } = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
+  return (
+    <header>
+      <div className="flex flex-wrap items-center justify-between max-w-4xl p-4 mx-auto md:p-8">
+        <Link to="/">
+          <h1 className="flex items-center text-white no-underline">
+            <span className="text-xl font-bold tracking-tight">
+              {site.siteMetadata.title}
+            </span>
+          </h1>
+        </Link>
+
+        <button
+          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
+          onClick={() => toggleExpansion(!isExpanded)}
+        >
+          <svg
+            className="w-3 h-3 fill-current"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+
+        <nav
+          className={`${
+            isExpanded ? `block` : `hidden`
+          } md:block md:flex md:items-center w-full md:w-auto`}
+        >
+          {[
+            {
+              route: `/about`,
+              title: `About`,
+            },
+          ].map((link) => (
+            <Link
+              className="block mt-4 text-white no-underline md:inline-block md:mt-0 md:ml-6"
+              key={link.title}
+              to={link.route}
+            >
+              {link.title}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+export default Header;

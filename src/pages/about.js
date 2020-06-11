@@ -1,11 +1,10 @@
-import React from "react"
-import Header from "../components/header"
+import React from "react";
+import Layout from "../components/layout";
 
 export default () => (
-    <>
-        <Header />
-        <div>
-            <h1>I'm learning Gatsby right now!</h1>
-        </div>
-    </>
+    <Layout>
+        <section>
+            <h1 className="text-indigo-100 text-3xl">This is a placeholder page for a digital resume.</h1>
+        </section>
+    </Layout>
 );
