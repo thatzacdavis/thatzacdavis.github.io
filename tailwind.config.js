@@ -1,9 +1,7 @@
 const { colors } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [
-    './src/**/*.js',
-  ],
+  purge: ['./src/**/*.js'],
   theme: {
     extend: {
       colors: {
@@ -13,11 +11,11 @@ module.exports = {
         },
         pink: {
           ...colors.pink,
-          '600': '#f765b8'
-        }
-      }
+          '600': '#f765b8',
+        },
+      },
     },
   },
   variants: {},
   plugins: [],
-}
+};
