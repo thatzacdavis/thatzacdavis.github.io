@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<BaseLayout title="About | Zac Davis" description="About Zac Davis">
+  <div class="stack gap-20">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <Hero
+          title="About Zac"
+          tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+          align="start"
+        />
+        <img
+          width="480"
+          height="620"
+          src="/assets/me-and-the-girls.jpg"
+          alt="Zac Davis holding his two daughters in his room"
+        />
+      </header>
+    </div>
+    <main class="wrapper about">
+      <section>
+        <h2 class="section-title">Background</h2>
+        <div class="content background">
+          <p>
+            I'm is a results-driven full-stack software engineer with a growth
+            mindset and keen eye for details and design. Skilled in React &
+            React Native, Python, NodeJS, and C#. Well-versed in building out
+            CI/CD pipelines and cloud infrastructure. Passionate about
+            collaborating and working cross-functionally to deliver high-quality
+            software solutions.
+          </p>
+          <p>
+            Outside of work, I'm is a proud husband of a teacher, and a girl dad
+            to a rambunctious toddler and a baby.
+          </p>
+          <p>
+            I'm an avid golfer, getting regular practice in at a 24/7 golf club,
+            and a big soccer and Philly sports fan. During my other (rare) spare
+            time, you can find me playing Counter-Strike or Palworld.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="content skills">
+          <p>
+            <b>Frontend: </b>CSS/HTML, TypeScript/Javascript, React[-Native],
+            React Query, VueJS, NextJS, Vercel, Expo, Tailwind
+          </p>
+          <p>
+            <b>Design: </b>Figma, Framer
+          </p>
+          <p>
+            <b>Backend: </b>NodeJS, ExpressJS, GitHub Actions, Python, C# .NET
+          </p>
+          <p>
+            <b>CI/CD: </b>GitHub Actions, Wepback, Vite
+          </p>
+          <p>
+            <b>Infrastructure: </b>AWS, Azure
+          </p>
+          <p>
+            <b>Datastores: </b>DynamoDB, Couchbase, Redis, Microsoft SQL,
+            PostgreSQL
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Education</h2>
+        <div class="content">
+          <p>
+            <i>Shippensburg University of Pennsylvania</i> | Shippensburg, PA
+          </p>
+          <p><i>Bachelor of Arts</i> | Communication/Journalism</p>
+          <p>
+            <b>Emphasis:</b> Print Media<p>
+              <p><b>Concentration:</b> Computer Science<p></p></p>
+            </p>
+          </p>
+        </div>
+      </section>
+
+      <style>
+        .about {
+          display: flex;
+          flex-direction: column;
+          gap: 3.5rem;
+        }
+
+        img {
+          margin-top: 1.5rem;
+          border-radius: 1.5rem;
+          box-shadow: var(--shadow-md);
+        }
+
+        section {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          color: var(--gray-200);
+        }
+
+        .section-title {
+          grid-column-start: 1;
+          font-size: var(--text-xl);
+          color: var(--gray-0);
+        }
+
+        .content {
+          grid-column: 2 / 4;
+        }
+
+        .background > p:not(:first-child),
+        .skills > p:not(:first-child) {
+          margin-top: 1em;
+        }
+
+        .content :global(a) {
+          text-decoration: 1px solid underline transparent;
+          text-underline-offset: 0.25em;
+          transition: text-decoration-color var(--theme-transition);
+        }
+
+        .content :global(a:hover),
+        .content :global(a:focus) {
+          text-decoration-color: currentColor;
+        }
+
+        @media (min-width: 50em) {
+          .about {
+            display: grid;
+            grid-template-columns: 1fr 60% 1fr;
+          }
+
+          .about > :global(:first-child) {
+            grid-column-start: 2;
+          }
+
+          section {
+            display: contents;
+            font-size: var(--text-lg);
+          }
+        }
+      </style>
+    </main>
+    <ContactCTA />
+  </div>
+</BaseLayout>
+
+<style>
+  .hero img {
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (min-width: 50em) {
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
+
+    .hero img {
+      aspect-ratio: 3 / 4;
+      border-radius: 4.5rem;
+      object-fit: cover;
+    }
+  }
+</style>
