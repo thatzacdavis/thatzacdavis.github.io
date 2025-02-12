@@ -1,6 +1,6 @@
 # thatzacdavis.github.io
 
-My profile site is made with Astro.
+My profile site is made with [Astro](https://astro.build/).
 
 ## 🧞 Commands
 
