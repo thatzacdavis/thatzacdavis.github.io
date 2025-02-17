@@ -14,10 +14,41 @@ const fetchPosts = async (): Promise<Post[]> => {
 };
 
 const posts = await fetchPosts();
+let logoSrc = "";
 ---
 
+<script is:inline>
+  const setLogoSource = () => {
+    if (typeof localStorage !== "undefined") {
+      const theme = localStorage.getItem("theme");
+      const logoSrc =
+        theme === "dark" ? "/assets/dev-rainbow.svg" : "/assets/dev-badge.svg";
+      console.log(logoSrc);
+
+      const devLogo = document.getElementById("#devLogo");
+      devLogo?.setAttribute("src", logoSrc);
+    }
+  };
+
+  // Run the function right away
+  setLogoSource();
+
+  // Also run the function whenever the theme changes
+  const observer = new MutationObserver(() => {
+    setLogoSource();
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+</script>
+
 <section class="feed-container">
-  <h2 class="feed-title">Latest Posts</h2>
+  <div class="feed-title-row">
+    <img id="#devLogo" class="dev-logo" src={logoSrc} />
+    <h2 class="feed-title">Latest Posts</h2>
+  </div>
+
   <ul class="feed-list">
     {
       posts.map((post) => (
@@ -48,6 +79,18 @@ const posts = await fetchPosts();
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .dev-logo {
+    width: 24px;
+    height: 24px;
+    margin-top: 6px;
+    margin-right: 12px;
+  }
+
+  .feed-title-row {
+    display: flex;
+    flex-direction: row;
   }
 
   .feed-title {
